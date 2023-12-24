@@ -16,7 +16,10 @@ class DBClient {
   }
 
   isAlive() {
-    return !!this.client;
+    if (this.client) {
+      return true;
+    }
+    return false;
   }
 
   async nbUsers() {
@@ -24,7 +27,7 @@ class DBClient {
   }
 
   async nbFiles() {
-    return this.files.countDocuments({});
+    return this.files.countDocuments();
   }
 }
 
