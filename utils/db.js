@@ -22,13 +22,13 @@ class DBClient {
   }
 
   isAlive() {
-    return !!this.client;
+    if (this.client) return true;
+    return false;
   }
 
   async nbUsers() {
-    const usersCollection = this.client.collection('users');
-    const count = await usersCollection.countDocuments();
-    return count;
+    const usersCollection = this.client.collection('users').countDocuments();
+    return usersCollection;
   }
 
   async nbFiles() {
